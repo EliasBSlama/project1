@@ -16,7 +16,7 @@ bool moveToGoal(double xGoal, double yGoal){
    move_base_msgs::MoveBaseGoal goal;
 
    //set up the frame parameters
-   goal.target_pose.header.frame_id = "map";
+   goal.target_pose.header.frame_id = "odom";
    goal.target_pose.header.stamp = ros::Time::now();
 
    /* moving towards the goal*/
@@ -49,8 +49,8 @@ bool moveToGoal(double xGoal, double yGoal);
 // char choose();
 
 /** declare the coordinates of interest **/
-double xGrupperum = 15.50;
-double yGrupperum = 10.20;
+double xGrupperum = 0.924;
+double yGrupperum = 0.334;
 
 bool goalReached = false;
  int main(int argc, char** argv){
@@ -59,15 +59,19 @@ bool goalReached = false;
    ros::spinOnce();
 
 
-   int destination = '1';
-   std::cout <<"Choose Choose what table to Moove: 1 or ..";
+   int destination = '0';
+   std::cout <<"Choose what table to Moove: 1 or ..";
    do{
    std::cin >> destination;
+   std::cout <<"cin succesfull";
+   std::cout << destination;
+   
    //    destination =choose();
-      if (destination == '1'){
+      if (destination == 1){
+         std::cout <<"moveToGoal succesfull";
          goalReached = moveToGoal(xGrupperum, yGrupperum);
       }
-      if (destination!='1'){
+      if (destination == 1){
          if (goalReached){
             ROS_INFO("Congratulations!");
             ros::spinOnce();
