@@ -1,9 +1,15 @@
 <launch>
   <!-- Map server -->
-  <arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)"/>  <!-- r200, kinect, asus_xtion_pro -->
-
   <arg name="map_file" default="$(env TURTLEBOT_MAP_FILE)"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- Minimal launch and gmapping-->
+  <include file="$(find turtlebot_bringup)/launch/minimal.launch" />
+  ros::duration(2.0).sleep();
+  <include file="$(find turtlebot_navigation)/launch/gmapping_demo.launch" />
+  ros::duration(2.0).sleep();
+  <include file="$(find turtlebot_rviz_launchers)/launch/view_navigation.launch" />
+  ros::duration(2.0).sleep();
 
   <!-- Localization -->
   <arg name="initial_pose_x" default="0.0"/>
