@@ -49,8 +49,14 @@ bool moveToGoal(double xGoal, double yGoal);
 // char choose();
 
 /** declare the coordinates of interest **/
-double xGrupperum = 0.924;
-double yGrupperum = 0.334;
+double xTable1 = 4.15;
+double yTable1 = -0.797;
+double xTableDestination1 =3.82;
+double yTableDestination1 =-4.09;
+double xTable2 = 7.45;
+double yTable2 = -1.67;
+double xTableDestination2 = 0.444;
+double yTableDestination2 =-3.65;
 
 bool goalReached = false;
  int main(int argc, char** argv){
@@ -60,27 +66,48 @@ bool goalReached = false;
 
 
    int destination = '0';
-   std::cout <<"Choose what table to Moove: 1 or ..";
-   do{
+   std::cout <<"Choose what table to move: 1 or 2: ";
+   // do{
    std::cin >> destination;
-   std::cout <<"cin succesfull";
-   std::cout << destination;
    
    //    destination =choose();
       if (destination == 1){
          std::cout <<"moveToGoal succesfull";
-         goalReached = moveToGoal(xGrupperum, yGrupperum);
+         goalReached = moveToGoal(xTable1, yTable1);
       }
       if (destination == 1){
          if (goalReached){
-            ROS_INFO("Congratulations!");
+            ROS_INFO("Congratulations, table number 1 reached, proceeding to destination!");
             ros::spinOnce();
-            ros::spinOnce();
-
+            //ros::spinOnce();
+         goalReached = moveToGoal(xTableDestination1, yTableDestination1);
+            if(goalReached){
+               ROS_INFO("Tables has been moved to desired location");
+               ros::spinOnce();
+            }
          }else{
             ROS_INFO("Hard Luck!");
          }
       }
-   }while(destination !='1');
+      if (destination == 2){
+         std::cout <<"moveToGoal succesfull";
+         goalReached = moveToGoal(xTable2, yTable2);
+      }
+      if (destination == 2){
+         if (goalReached){
+            ROS_INFO("Congratulations, table number 2 reached, proceeding to destination!");
+            ros::spinOnce();
+            //ros::spinOnce();
+         goalReached = moveToGoal(xTableDestination2, yTableDestination2);
+            if(goalReached){
+               ROS_INFO("Tables has been moved to desired location");
+               ros::spinOnce();
+            }
+         }else{
+            ROS_INFO("Hard Luck!");
+         }
+      }
+   // }
+   while(destination !='1');
    return 0;
 }
