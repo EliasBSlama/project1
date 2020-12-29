@@ -5,7 +5,7 @@ project(project1)
 add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
-find_package(catkin REQUIRED COMPONENTS roscpp geometry_msgs move_base_msgs actionlib)
+find_package(catkin REQUIRED COMPONENTS roslib roscpp geometry_msgs move_base_msgs actionlib)
 find_package(std_msgs REQUIRED)
 
 ###################################
@@ -21,6 +21,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${std_msgs_INCLUDE_DIRS}
 )
+
 
 
 # Declare Kill Turtles C++ executable and rename to short name (in case catkin_make is used).
@@ -54,6 +55,14 @@ target_link_libraries(${PROJECT_NAME}_publishminiproject
   ${std_msgs_LIBRARIES}
 )
 
+
+#add_executable(${PROJECT_NAME}_miniprojectsubscriber2 src/miniprojectsubscriber2.cpp)
+#set_target_properties(${PROJECT_NAME}_miniprojectsubscriber2 PROPERTIES OUTPUT_NAME miniprojectsubscriber2 PREFIX "")
+#target_link_libraries(${PROJECT_NAME}_miniprojectsubscriber2
+#  ${catkin_LIBRARIES}
+#  ${std_msgs_LIBRARIES}
+#)
+
 #############
 ## Install ##
 #############
@@ -64,5 +73,6 @@ install(TARGETS
   ${PROJECT_NAME}_projectroutebackup
   ${PROJECT_NAME}_miniproject
   ${PROJECT_NAME}_publishminiproject
+  #${PROJECT_NAME}_miniprojectsubscriber2
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

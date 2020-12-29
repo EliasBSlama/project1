@@ -2,7 +2,8 @@
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
 #include "stdlib.h"
-#include "std_msgs/UInt16.h"
+#include "std_msgs/String.h"
+#include "miniprojectsubscriber.h"
 
 
 bool moveToGoal(double xGoal, double yGoal){
@@ -62,7 +63,7 @@ bool goalReached = false;
 
 
 //Er til subscriber
-
+/*
 std_msgs::UInt16 rfid;
 
 void chatterCallback(const std_msgs::UInt16::ConstPtr& msg)
@@ -79,10 +80,14 @@ void chatterCallback(const std_msgs::UInt16::ConstPtr& msg)
 
    // ros::Subscriber rfid = n.subscribe("chatter", 1000, chatterCallback);
 
+*/
+
+using namespace std;
 
 int main(int argc, char** argv){ //
 
-// subscriber
+// subscriber 
+/*
    ros::init(argc, argv, "projectroute");
 
    ros::NodeHandle nh;
@@ -90,30 +95,34 @@ int main(int argc, char** argv){ //
    ros::Subscriber sub = nh.subscribe("chatter", 1000, chatterCallback);
 
    // std::cout << msg->data.c_str()
-
+*/
 // her til
-
+   ros::Time::init();
+   ros::Rate loop_rate(1000);
    ros::init(argc, argv, "map_navigation_node");
    
    ros::spinOnce();
-
-   // std::cout << str_var;
-
-      while(rfid != '1'){
-        std::cout << "Waiting for RFID";
+  // int count = 1;
+   while(foo::x != 1){
+      //if(foo::x=1){
+         std::cout <<"Wating for RFID ";
+         //count++;
+         loop_rate.sleep();
       }
-         if(rfid = '1'){
+   //}
+         if(foo::x=1){
          std::cout <<"rfid succesfull";
          goalReached = moveToGoal(xMap1, yMap1);
          }
             if(goalReached){
-               ROS_INFO("Tables has been moved to desired location");
+               ROS_INFO("Location has been reached");
                ros::spinOnce();
                return 0;
             }
-         else{
-            ROS_INFO("Hard Luck!");
-         }
+         //else{
+            //ROS_INFO("Hard Luck!");
+       //  }
       // while(destination !='1');
-      return 0;
+       return 1;
+   
       }
