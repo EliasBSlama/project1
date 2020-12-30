@@ -18,7 +18,7 @@ int main(int argc, char **argv)
    * You must call one of the versions of ros::init() before using any other
    * part of the ROS system.
    */
-  ros::init(argc, argv, "talker");
+  ros::init(argc, argv, "publishminiproject");
 
   /**
    * NodeHandle is the main access point to communications with the ROS system.
@@ -61,7 +61,7 @@ int main(int argc, char **argv)
     std_msgs::String msg;
 
     std::stringstream ss;
-    ss << "hello world " << count;
+    ss << "This square's areal is 0.04 " << count;
     msg.data = ss.str();
 
     ROS_INFO("%s", msg.data.c_str());
