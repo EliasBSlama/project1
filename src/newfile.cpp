@@ -1,1 +1,0 @@
-//stor test dot exe
