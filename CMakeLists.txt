@@ -5,7 +5,7 @@ project(project1)
 add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
-find_package(catkin REQUIRED COMPONENTS roslib roscpp geometry_msgs move_base_msgs actionlib)
+find_package(catkin REQUIRED COMPONENTS roslib roscpp geometry_msgs move_base_msgs actionlib genmsg)
 find_package(std_msgs REQUIRED)
 
 ###################################
@@ -40,6 +40,7 @@ target_link_libraries(${PROJECT_NAME}_projectroutebackup
   ${catkin_LIBRARIES}
   ${std_msgs_LIBRARIES}
 )
+
 
 add_executable(${PROJECT_NAME}_miniproject src/miniproject.cpp)
 set_target_properties(${PROJECT_NAME}_miniproject PROPERTIES OUTPUT_NAME miniproject PREFIX "")
